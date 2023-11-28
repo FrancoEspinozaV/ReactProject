@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "space-before-function-paren": ["error", "always"]
+  },
+  "presets": ["@babel/preset-react"]
+}
