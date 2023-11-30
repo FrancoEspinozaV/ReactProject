@@ -1,25 +1,11 @@
-import { useEffect, useState } from 'react'
-import { getRandomFact } from './servece/fact'
+import { useCatFact, useCatImage } from './servece/hooks/useCat'
 
 function App() {
-  const [fact, setFact] = useState('')
-  const [imagenUrl, setImagenUrl] = useState()
+  const { fact, refreshFact } = useCatFact()
+  const { imagenUrl } = useCatImage({ fact })
 
-  useEffect(() => {
-    getRandomFact().then(setFact)
-  }, [])
-
-  useEffect(() => {
-    if (!fact) return
-    const word = fact.split(' ', 3).join(' ')
-    setImagenUrl(
-      `https://cataas.com/cat/says/${word}?fontSize=55&fontColor=red`
-    )
-  }, [fact])
-
-  const handleClick = async () => {
-    const newFact = await getRandomFact()
-    setFact(newFact)
+  const handleClick = () => {
+    refreshFact()
   }
   return (
     <main>
