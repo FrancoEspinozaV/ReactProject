@@ -1,7 +1,13 @@
-import { useFilterContext } from '../context/filters'
+import { useContext } from 'react'
+import { FilterContext } from '../context/filters'
 
 export function useFilter() {
-  const { filters, setFilters } = useFilterContext()
+  const filtersContext = useContext(FilterContext)
+  if (filtersContext === undefined) {
+    throw new Error('useFilter debe de usado dentro de un FilterProvider')
+  }
+
+  const { filters, setFilters } = filtersContext
 
   const filterProducts = (products) => {
     return products.filter(

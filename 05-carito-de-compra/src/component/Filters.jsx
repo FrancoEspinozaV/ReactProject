@@ -1,13 +1,13 @@
-import { useId, useState } from 'react'
+import { useId } from 'react'
 import '../style/filters.css'
 import { useFilter } from '../hooks/useFilter'
-import { useProductsContext } from '../context/products'
+import { useProducts } from '../hooks/useProduct'
 
 export function Filters() {
   const { filters, setFilters } = useFilter()
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
-  const { products } = useProductsContext()
+  const { products } = useProducts()
 
   const categories = [
     'all',
