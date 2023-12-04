@@ -38,7 +38,7 @@
   height: 32px;
   justify-content: center;
   padding: 4px;
-  position: absolute;
+  position: fixed;
   right: 8px;
   top: 8px;
   transition: all 0.3s ease;
