@@ -1,18 +1,30 @@
-import { HomePage } from './pages/Home'
-import { AboutPage } from './pages/About'
 import { Routes } from './component/Routes'
-import { Search } from './pages/Search'
 import { Route } from './component/Route'
+import { lazy } from 'react'
+import { Suspense } from 'react'
+
+const AboutPage = lazy(() =>
+  import('./pages/About').then((module) => ({ default: module.AboutPage }))
+)
+
+const HomePage = lazy(() =>
+  import('./pages/Home').then((module) => ({ default: module.HomePage }))
+)
+
+const Search = lazy(() =>
+  import('./pages/Search').then((module) => ({ default: module.Search }))
+)
 
 function App() {
   return (
-    <main>
+    <Suspense fallback={null}>
       <Routes>
         <Route path='/' Component={HomePage} />
+        <Route path='/:lang/about' Component={AboutPage} />
         <Route path='/about' Component={AboutPage} />
-        <Route path='/search/:query' Component={Search} />
+        <Route path='/:lang/search/:query' Component={Search} />
       </Routes>
-    </main>
+    </Suspense>
   )
 }
 

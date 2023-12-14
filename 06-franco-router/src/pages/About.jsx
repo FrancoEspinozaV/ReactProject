@@ -1,12 +1,12 @@
+import { useI18n } from '../../i18n'
 import { Link } from '../component/Link'
 
-export function AboutPage() {
+export function AboutPage({ routParams }) {
+  const i18n = useI18n(routParams.lang ?? 'es')
   return (
     <>
-      <h1>About</h1>
-      <p>
-        Mi nombre es Franco Espinoza y estoy creando un clon de React Router
-      </p>
+      <h1>{i18n.title}</h1>
+      <p>{i18n.description}</p>
       <div>
         <img
           width={300}
@@ -15,7 +15,7 @@ export function AboutPage() {
           alt='Foto de Franco Espinoza'
         />
       </div>
-      <Link to='/'>Ir al inicio</Link>
+      <Link to='/'>{i18n.button}</Link>
     </>
   )
 }
