@@ -1,29 +1,17 @@
-import { useEffect, useState } from 'react'
-import { STATE } from './constantes'
 import { HomePage } from './pages/Home'
 import { AboutPage } from './pages/About'
+import { Routes } from './component/Routes'
+import { Search } from './pages/Search'
+import { Route } from './component/Route'
 
 function App() {
-  const [curretPath, setCurrentPath] = useState(window.location.pathname)
-
-  useEffect(() => {
-    const onLocationChange = () => {
-      setCurrentPath(window.location.pathname)
-    }
-
-    window.addEventListener(STATE.PUSH_STATE, onLocationChange)
-    window.addEventListener(STATE.POP_STATE, onLocationChange)
-
-    return () => {
-      window.removeEventListener(STATE.PUSH_STATE, onLocationChange)
-      window.removeEventListener(STATE.POP_STATE, onLocationChange)
-    }
-  }, [])
-
   return (
     <main>
-      {curretPath === '/' && <HomePage />}
-      {curretPath === '/about' && <AboutPage />}
+      <Routes>
+        <Route path='/' Component={HomePage} />
+        <Route path='/about' Component={AboutPage} />
+        <Route path='/search/:query' Component={Search} />
+      </Routes>
     </main>
   )
 }
