@@ -6,7 +6,7 @@ export function navigate(href) {
   window.dispatchEvent(navigationEvent)
 }
 
-export function Link({ target, to, ...pros }) {
+export function Link({ target, to, ...props }) {
   const handleClick = (event) => {
     const isMainEvent = event.button === BUTTON.primary
     const isManageableEvent = target === undefined || target === 'self'
@@ -19,5 +19,5 @@ export function Link({ target, to, ...pros }) {
     }
   }
 
-  return <a onClick={handleClick} href={to} {...pros} />
+  return <a onClick={handleClick} href={to} {...props} />
 }
