@@ -1,7 +1,8 @@
-import { Routes } from './component/Routes'
+import { Router } from './component/Router'
 import { Route } from './component/Route'
 import { lazy } from 'react'
 import { Suspense } from 'react'
+import { Error404 } from './pages/404'
 
 const AboutPage = lazy(() =>
   import('./pages/About').then((module) => ({ default: module.AboutPage }))
@@ -18,12 +19,12 @@ const Search = lazy(() =>
 function App() {
   return (
     <Suspense fallback={null}>
-      <Routes>
+      <Router routes={[]} defaultComponent={Error404}>
         <Route path='/' Component={HomePage} />
         <Route path='/:lang/about' Component={AboutPage} />
         <Route path='/about' Component={AboutPage} />
         <Route path='/:lang/search/:query' Component={Search} />
-      </Routes>
+      </Router>
     </Suspense>
   )
 }

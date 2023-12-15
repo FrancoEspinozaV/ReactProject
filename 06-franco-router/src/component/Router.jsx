@@ -1,17 +1,17 @@
 import { Children, useEffect, useState } from 'react'
 import { STATE } from '../constantes'
 import { match } from 'path-to-regexp'
-
-export function Routes({
+import { getCurrentPath } from '../utils'
+export function Router({
   children,
   routes = [],
   defaultComponent: DefaultComponent = () => null,
 }) {
-  const [curretPath, setCurrentPath] = useState(window.location.pathname)
+  const [curretPath, setCurrentPath] = useState(getCurrentPath())
 
   useEffect(() => {
     const onLocationChange = () => {
-      setCurrentPath(window.location.pathname)
+      setCurrentPath(getCurrentPath())
     }
 
     window.addEventListener(STATE.PUSH_STATE, onLocationChange)
@@ -32,7 +32,7 @@ export function Routes({
     return isRoute ? props : null
   })
 
-  const routeToUse = routes.concat(routesFromChildren)
+  const routeToUse = routes.concat(routesFromChildren).filter(Boolean)
 
   const Page = routeToUse.find(({ path }) => {
     if (path === curretPath) return true
