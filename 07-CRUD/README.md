@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# Gestión de usuarios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto creado para el entendimiento de CRUD
 
-Currently, two official plugins are available:
+## Herramientas utilizadas:
+- Typescript
+- React
+- React Redux toolkit
+- React Redux
+- tremor
+- sonner
+- rules rome
+- Hero Icons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Avances
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- [x] Crear un Mooks de usuarios
+- [x] Mostrar datos con Tremor
+- [x] Añadir Iconos
+- [x] Agregar funcionalidad de eliminar usuarios
+- [x] Agregar funcionalidad de Crear usuarios
+- [ ] Agregar funcionalidad de Editar usuarios
+- [x] Utilizar Redux para crear el contexto global
+- [x] Crear Middleware para persistencia de datos
+- [x] Crear Middleware rollback
