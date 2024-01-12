@@ -11,7 +11,7 @@ import {
 } from "@tremor/react";
 import { Edit } from "../Icons/Edit";
 import { Trash } from "../Icons/trash";
-import { useUserAction } from "../hooks/useDeleteUser";
+import { useUserAction } from "../hooks/useUserAction";
 import { useAppSelector } from "../hooks/useUsers";
 
 export function ListOfUser() {

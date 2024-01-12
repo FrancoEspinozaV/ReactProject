@@ -1,13 +1,14 @@
-import "./App.css";
+import { Toaster } from "sonner";
+import { CreateNewUser } from "./component/AddUser";
 import { ListOfUser } from "./component/ListOfUser";
+
 function App() {
 	return (
-		<>
-			<div>
-				<h1>Proyecto</h1>
-			</div>
+		<main style={{ margin: "10px" }}>
 			<ListOfUser />
-		</>
+			<CreateNewUser />
+			<Toaster richColors />
+		</main>
 	);
 }
 

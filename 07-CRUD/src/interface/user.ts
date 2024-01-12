@@ -1,4 +1,5 @@
 export type userId = string;
+export type ErrorFormAddUser = null | "ok" | "error";
 
 export interface user {
 	name: string;
