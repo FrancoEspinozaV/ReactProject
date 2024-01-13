@@ -18,7 +18,7 @@ const syncWithDataBase: Middleware = (store) => (next) => (action) => {
 		})
 			.then((res) => {
 				if (res.ok) {
-					toast.success(`Usuario Editado correctamente: ${payload.name}`);
+					toast.success(`Usuario editado correctamente: ${payload.name}`);
 				}
 			})
 			.catch((error) => {
@@ -33,7 +33,7 @@ const syncWithDataBase: Middleware = (store) => (next) => (action) => {
 		})
 			.then((res) => {
 				if (res.ok) {
-					toast.success(`Usuario Agregado correctamente: ${payload.name}`);
+					toast.success(`Usuario agregado correctamente: ${payload.name}`);
 				}
 			})
 			.catch((error) => {
