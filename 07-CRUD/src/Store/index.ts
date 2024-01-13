@@ -12,14 +12,28 @@ const syncWithDataBase: Middleware = (store) => (next) => (action) => {
 	const { type, payload } = action;
 	const previousState = store.getState();
 	next(action);
+	if (type === "users/editUser") {
+		fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
+			method: "PATCH",
+		})
+			.then((res) => {
+				if (res.ok) {
+					toast.success(`Usuario Editado correctamente: ${payload.name}`);
+				}
+			})
+			.catch((error) => {
+				toast.error(`Error al eliminar al usuario ${payload.name}`);
+				console.log(error);
+			});
+	}
 
 	if (type === "users/addUser") {
-		toast.success(`Usuario Agregado correctamente: ${payload.name}`);
 		fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
 			method: "POST",
 		})
 			.then((res) => {
 				if (res.ok) {
+					toast.success(`Usuario Agregado correctamente: ${payload.name}`);
 				}
 			})
 			.catch((error) => {

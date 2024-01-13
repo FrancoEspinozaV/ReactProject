@@ -11,7 +11,6 @@ import {
 	Title,
 } from "@tremor/react";
 import { useState } from "react";
-import { toast } from "sonner";
 import { Edit } from "../Icons/Edit";
 import { Save } from "../Icons/Save";
 import { Trash } from "../Icons/trash";
@@ -51,7 +50,6 @@ export function ListOfUser() {
 		setEditing(null);
 		setName(null);
 		setEmail(null);
-		toast.success("Usuario editado correctamente");
 	};
 
 	const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {

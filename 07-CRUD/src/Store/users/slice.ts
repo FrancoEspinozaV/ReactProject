@@ -23,11 +23,12 @@ export const usersSlice = createSlice({
 		addUser: (state, action: PayloadAction<userId>) => {
 			// luego generar id por bd
 			const id = crypto.randomUUID();
-			state.push({ id, ...action.payload });
+			const { payload } = action;
+			state.push({ id, ...payload });
 		},
 		rollBackUser: (state, action: PayloadAction<userWithId>) => {
 			const isUserAlreadyDefined = state.some(
-				(user) => user === action.payload.id,
+				(user) => user.id === action.payload.id,
 			);
 			if (!isUserAlreadyDefined) {
 				state.push(action.payload);
@@ -36,7 +37,6 @@ export const usersSlice = createSlice({
 		editUser: (state, action: PayloadAction<userWithId>) => {
 			const { id, name, email, github } = action.payload;
 			const index = state.findIndex((user) => user.id === id);
-			console.log(index, name, id);
 			if (index !== -1) {
 				state[index] = { id, name, email, github };
 			}
