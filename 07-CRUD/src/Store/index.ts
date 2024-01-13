@@ -8,10 +8,24 @@ const persitedMiddleware: Middleware = (store) => (next) => (action) => {
 };
 
 const syncWithDataBase: Middleware = (store) => (next) => (action) => {
-	console.log({ action, state: store.getState() });
 	const { type, payload } = action;
 	const previousState = store.getState();
 	next(action);
+
+	if (type === "users/addUser") {
+		toast.success(`Usuario Agregado correctamente: ${payload.name}`);
+		fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
+			method: "POST",
+		})
+			.then((res) => {
+				if (res.ok) {
+				}
+			})
+			.catch((error) => {
+				toast.error(`Error al eliminar al usuario ${payload.name}`);
+				console.log(error);
+			});
+	}
 
 	if (type === "users/deletUser") {
 		const userToRemove = previousState.users.find(

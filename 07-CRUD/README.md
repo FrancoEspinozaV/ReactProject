@@ -19,7 +19,7 @@ Proyecto creado para el entendimiento de CRUD
 - [x] Añadir Iconos
 - [x] Agregar funcionalidad de eliminar usuarios
 - [x] Agregar funcionalidad de Crear usuarios
-- [ ] Agregar funcionalidad de Editar usuarios
+- [x] Agregar funcionalidad de Editar usuarios
 - [x] Utilizar Redux para crear el contexto global
 - [x] Crear Middleware para persistencia de datos
 - [x] Crear Middleware rollback

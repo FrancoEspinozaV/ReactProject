@@ -8,7 +8,7 @@ export function Trash() {
 			stroke="currentColor"
 			className="w-6 h-6"
 		>
-			<title>Tresh</title>
+			<title>Delete</title>
 			<path
 				strokeLinecap="round"
 				strokeLinejoin="round"

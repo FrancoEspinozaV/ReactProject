@@ -33,8 +33,17 @@ export const usersSlice = createSlice({
 				state.push(action.payload);
 			}
 		},
+		editUser: (state, action: PayloadAction<userWithId>) => {
+			const { id, name, email, github } = action.payload;
+			const index = state.findIndex((user) => user.id === id);
+			console.log(index, name, id);
+			if (index !== -1) {
+				state[index] = { id, name, email, github };
+			}
+		},
 	},
 });
 
 export default usersSlice.reducer;
-export const { addUser, deletUser, rollBackUser } = usersSlice.actions;
+export const { addUser, deletUser, rollBackUser, editUser } =
+	usersSlice.actions;
