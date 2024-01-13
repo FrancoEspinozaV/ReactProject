@@ -39,13 +39,15 @@ export function ListOfUser() {
 		github: string,
 	) => {
 		const userToEdit = users.find((user) => user.id === id);
+
+		let updatedName = nameEditing ?? "";
+		let updatedEmail = emailEditing ?? "";
+
 		if (userToEdit) {
-			console.log("encontrado");
-			nameEditing = nameEditing || userToEdit.name;
-			emailEditing = emailEditing || userToEdit.email;
+			updatedName = nameEditing || userToEdit.name;
+			updatedEmail = emailEditing || userToEdit.email;
 		}
-		console.log(nameEditing, emailEditing);
-		editUsers({ id, name: nameEditing, email: emailEditing, github });
+		editUsers({ id, name: updatedName, email: updatedEmail, github });
 		setEditing(null);
 		setName(null);
 		setEmail(null);

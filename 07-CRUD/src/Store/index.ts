@@ -1,5 +1,6 @@
 import { configureStore, type Middleware } from "@reduxjs/toolkit";
 import { toast } from "sonner";
+import { userWithId } from "../interface/user";
 import usersSliceReducer, { rollBackUser } from "./users/slice";
 
 const persitedMiddleware: Middleware = (store) => (next) => (action) => {
@@ -29,7 +30,7 @@ const syncWithDataBase: Middleware = (store) => (next) => (action) => {
 
 	if (type === "users/deletUser") {
 		const userToRemove = previousState.users.find(
-			(user) => user.id === payload,
+			(user: userWithId) => user.id === payload,
 		);
 		// tarea para hacerlo con post, delet, etc
 		fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
