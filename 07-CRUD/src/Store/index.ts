@@ -9,11 +9,14 @@ const persitedMiddleware: Middleware = (store) => (next) => (action) => {
 };
 
 const syncWithDataBase: Middleware = (store) => (next) => (action) => {
-	const { type, payload } = action;
+	const { type, payload } = action as {
+		type: string;
+		payload: string | userWithId;
+	};
 	const previousState = store.getState();
 	next(action);
-	if (type === "users/editUser") {
-		fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
+	if (type === "users/editUser" && typeof payload === "object") {
+		fetch(`https://jsonplaceholder.typicode.com/users/${payload.id}`, {
 			method: "PATCH",
 		})
 			.then((res) => {
@@ -27,8 +30,8 @@ const syncWithDataBase: Middleware = (store) => (next) => (action) => {
 			});
 	}
 
-	if (type === "users/addUser") {
-		fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
+	if (type === "users/addUser" && typeof payload === "object") {
+		fetch(`https://jsonplaceholder.typicode.com/users/${payload.id}`, {
 			method: "POST",
 		})
 			.then((res) => {
@@ -46,7 +49,6 @@ const syncWithDataBase: Middleware = (store) => (next) => (action) => {
 		const userToRemove = previousState.users.find(
 			(user: userWithId) => user.id === payload,
 		);
-		// tarea para hacerlo con post, delet, etc
 		fetch(`https://jsonplaceholder.typicode.com/users/${payload}`, {
 			method: "DELETE",
 		})

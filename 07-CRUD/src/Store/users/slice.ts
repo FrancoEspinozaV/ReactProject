@@ -20,11 +20,11 @@ export const usersSlice = createSlice({
 			const newUsers = state.filter((user) => user.id !== id);
 			return newUsers;
 		},
-		addUser: (state, action: PayloadAction<userId>) => {
+		addUser: (state, action: PayloadAction<userWithId>) => {
 			// luego generar id por bd
-			const id = crypto.randomUUID();
+
 			const { payload } = action;
-			state.push({ id, ...payload });
+			state.push({ ...payload });
 		},
 		rollBackUser: (state, action: PayloadAction<userWithId>) => {
 			const isUserAlreadyDefined = state.some(

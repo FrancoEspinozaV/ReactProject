@@ -12,18 +12,17 @@ export function CreateNewUser() {
 		event.preventDefault();
 		setError(null);
 
-		const form = event.target;
+		const form = event.currentTarget;
 		const data = new FormData(form);
 		const name = data.get("name") as string;
 		const email = data.get("email") as string;
 		const github = data.get("github") as string;
-		console.log(name, email, github);
 		if (!name || !email || !github) {
 			return setError("error");
 		}
-		console.log("B");
 		setError("ok");
-		addUsers({ name, email, github });
+		const id = crypto.randomUUID();
+		addUsers({ id, name, email, github });
 		form.reset();
 	};
 	return (
