@@ -1,0 +1,13 @@
+
+[✔️] crear/modificar el README
+[✔️] Agregar el añadir con "sommer" 
+[✔️] crear el Editar
+  -> [✔️] Convertir los campos Nombre y correo en editables
+  -> [✔️] Cambiar el icono de editar por guardar
+  -> [✔️] agregar funcionalidad de editar al icono guardar
+
+
+Mejoras a Futuro:
+[] crear rollback para agregar usuarios
+[] Refactorizar componente useUserAction
+[] Crear base de datos con "supabase"
