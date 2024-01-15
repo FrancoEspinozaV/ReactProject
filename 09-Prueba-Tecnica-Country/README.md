@@ -11,8 +11,8 @@ Los pasos a seguir:
 - [x] Proporcionar la opción de colorear las filas, como se muestra en el ejemplo.
 - [x] Permitir ordenar los datos por país, como se muestra en el ejemplo.
 - [x] Habilitar la posibilidad de eliminar una fila como se muestra en el ejemplo.
-- [] Implemente una función que permita al usuario restaurar el estado inicial, lo que significa que se recuperarán todas las filas eliminadas.
-- [] Gestionar los posibles errores que puedan producirse.
-- [] Implementar una función que permita al usuario filtrar los datos por país.
-- [] Evitar que los usuarios vuelvan a ordenar los datos cuando el usuario cambie el filtro por país.
-- [] Ordenar haciendo clic en la cabecera de la columna.
+- [x] Implemente una función que permita al usuario restaurar el estado inicial, lo que significa que se recuperarán todas las filas eliminadas.
+- [x] Gestionar los posibles errores que puedan producirse.
+- [x] Implementar una función que permita al usuario filtrar los datos por país.
+- [x] Evitar que los usuarios vuelvan a ordenar los datos cuando el usuario cambie el filtro por país.
+- [x] Ordenar haciendo clic en la cabecera de la columna.
