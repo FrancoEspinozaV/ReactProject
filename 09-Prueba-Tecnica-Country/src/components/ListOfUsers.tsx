@@ -8,6 +8,7 @@ import {
 	TableHeaderCell,
 	TableRow,
 } from "@tremor/react";
+import { useState } from "react";
 import { Trash } from "../Icons/Tresh";
 import { SortBy, Users } from "../types.d";
 
@@ -24,6 +25,28 @@ export function ListOfUsers({
 	users,
 	isColor,
 }: Props) {
+	const [toggleName, setToggleName] = useState<SortBy>(SortBy.NONE);
+	const [toggleLast, setToggleLast] = useState<SortBy>(SortBy.NONE);
+	const [toggleCountry, setToggleCountry] = useState<SortBy>(SortBy.NONE);
+
+	const changeToggleName = () => {
+		const newToggleName =
+			toggleName === SortBy.NONE ? SortBy.NAME : SortBy.NONE;
+		setToggleName(newToggleName);
+		changeSorting(newToggleName);
+	};
+	const changeToggleLast = () => {
+		const newToggleLast =
+			toggleLast === SortBy.NONE ? SortBy.LAST : SortBy.NONE;
+		setToggleLast(newToggleLast);
+		changeSorting(newToggleLast);
+	};
+	const changeToggleCountry = () => {
+		const newToggleCountry =
+			toggleCountry === SortBy.NONE ? SortBy.COUNTRY : SortBy.NONE;
+		setToggleCountry(newToggleCountry);
+		changeSorting(newToggleCountry);
+	};
 	return (
 		<Card>
 			<Table>
@@ -32,19 +55,19 @@ export function ListOfUsers({
 						<TableHeaderCell>Foto</TableHeaderCell>
 						<TableHeaderCell
 							style={{ cursor: "pointer" }}
-							onClick={() => changeSorting(SortBy.NAME)}
+							onClick={() => changeToggleName()}
 						>
 							Nombre
 						</TableHeaderCell>
 						<TableHeaderCell
 							style={{ cursor: "pointer" }}
-							onClick={() => changeSorting(SortBy.LAST)}
+							onClick={() => changeToggleLast()}
 						>
 							Apellido
 						</TableHeaderCell>
 						<TableHeaderCell
 							style={{ cursor: "pointer" }}
-							onClick={() => changeSorting(SortBy.COUNTRY)}
+							onClick={() => changeToggleCountry()}
 						>
 							País
 						</TableHeaderCell>
