@@ -1,24 +1,24 @@
 import { ListOfUsers } from "./components/ListOfUsers";
+import { useUsers } from "./hooks/useUsers";
 import { SortBy, type Users } from "./types.d";
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { Button, TextInput } from "@tremor/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
+import { Toaster } from "sonner";
+
 function App() {
-	const [users, setUsers] = useState<Users[]>([]);
+	const {
+		isError,
+		isLoading,
+		users,
+		refetch,
+		fetchNextPage,
+		deleteData,
+		hasNextPage,
+	} = useUsers();
 	const [isColor, setIsColor] = useState<boolean>(false);
 	const [sorting, setSorting] = useState<SortBy>(SortBy.NONE);
 	const [filterCountry, setFilterCountry] = useState<string | null>(null);
-	const recoveryUsers = useRef<Users[]>([]);
-
-	useEffect(() => {
-		fetch("https://randomuser.me/api/?results=100")
-			.then((res) => res.json())
-			.then((data) => {
-				recoveryUsers.current = data.results;
-				setUsers(data.results);
-			})
-			.catch((error) => console.log(error));
-	}, []);
 
 	const toggleColors = () => {
 		setIsColor(!isColor);
@@ -30,13 +30,8 @@ function App() {
 		setSorting(newSortingValue);
 	};
 
-	const handleDelete = (email: string) => {
-		const userFilters = users.filter((user) => user.email !== email);
-		setUsers(userFilters);
-	};
-
-	const recoverUsers = () => {
-		setUsers(recoveryUsers.current);
+	const recoverUsers = async () => {
+		await refetch();
 	};
 
 	const handleChangeSort = (sort: SortBy) => {
@@ -95,12 +90,25 @@ function App() {
 					onChange={(e) => setFilterCountry(e.target.value)}
 				/>
 			</div>
-			<ListOfUsers
-				changeSorting={handleChangeSort}
-				deleteUser={handleDelete}
-				users={sortedUsers}
-				isColor={isColor}
-			/>
+			{!isError && (
+				<ListOfUsers
+					changeSorting={handleChangeSort}
+					deleteUser={deleteData}
+					users={sortedUsers}
+					isColor={isColor}
+				/>
+			)}
+			{isError && <p>Ha ocurrido un error</p>}
+			{!isError && !isLoading && users.length === 0 && (
+				<p>No existen usuarios</p>
+			)}
+			{isLoading && <strong>Cargando...</strong>}
+
+			{!isError && !isLoading && hasNextPage === true && (
+				<Button onClick={() => fetchNextPage()}>cargar mas usuarios</Button>
+			)}
+
+			<Toaster richColors />
 		</main>
 	);
 }

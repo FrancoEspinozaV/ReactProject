@@ -16,3 +16,8 @@ Los pasos a seguir:
 - [x] Implementar una función que permita al usuario filtrar los datos por país.
 - [x] Evitar que los usuarios vuelvan a ordenar los datos cuando el usuario cambie el filtro por país.
 - [x] Ordenar haciendo clic en la cabecera de la columna.
+
+## Mejoras implementadas
+
+- [x] cambiar de 100 filas a 10 e ir cargando a medida del usuario (paginación)
+- [x] implementar el infinte scroll
