@@ -22,6 +22,8 @@ export function useUsers() {
 			refetchOnWindowFocus: false,
 		});
 
+	console.log("Data");
+	console.log(data);
 	const mutation = useMutation({
 		mutationFn: deleteUsers,
 		onMutate: async (variables) => {
@@ -29,20 +31,20 @@ export function useUsers() {
 			const userFilters = users.filter(
 				(user) => user.email !== variables.email,
 			);
-			console.log(variables.id); // 1 --> es de test ya que lo pide
 
-			await queryClient.cancelQueries({ queryKey: ["users"] });
+			//await queryClient.cancelQueries({ queryKey: ["users"] });
 
-			const previusUsers = queryClient.getQueryData(["users"]);
-			console.log(previusUsers); // undefined
+			const previusUsers = data;
 
 			const result = queryClient.setQueryData(["users"], () => {
 				return {
-					pages: [{ users: userFilters }],
-					pageParams: [data?.pageParams],
+					pages: [{ users: userFilters, nextPage: variables.id }],
+					pageParams: [data?.pageParams[0]],
 				};
 			});
-			console.log(result); // respuesta con el elemento borrado
+			console.log("Resultado");
+			console.log(result); // respuesta con el usuario borrado
+
 			return { previusUsers };
 		},
 		onError: (err, newData, context) => {
@@ -53,12 +55,18 @@ export function useUsers() {
 			queryClient.setQueryData(["users"], context?.previusUsers);
 		},
 		onSettled: () => {
-			queryClient.invalidateQueries({ queryKey: ["users"] });
+			queryClient.setQueryData(["users"], () => {
+				return {
+					pages: [{ users: [], nextPage: 2 }],
+					pageParams: [1],
+				};
+			});
+			console.log("Ejecutado Siempre");
 		},
 	});
 
 	const deleteData = (email: string) => {
-		mutation.mutate({ email, id: 1 });
+		mutation.mutate({ email, id: data?.pages[0].nextPage });
 	};
 
 	return {

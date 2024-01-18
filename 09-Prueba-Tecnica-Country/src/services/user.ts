@@ -1,3 +1,10 @@
+import { Users } from "../types";
+
+interface Props {
+	users: Users[];
+	nextPage?: number;
+}
+
 export const fetchUsers = async ({
 	pageParam,
 }: { pageParam?: number | unknown }) => {
@@ -21,15 +28,24 @@ export const fetchUsers = async ({
 export const deleteUsers = async ({
 	email,
 	id,
-}: { email: string; id: number }) => {
-	const response = await fetch(
+}: { email: string; id?: number }) => {
+	return await fetch(
 		`https://randomuser.me/api/?results=10&seed=franco&page=${id}`,
-		{
-			method: "DELETE",
-			body: JSON.stringify({
-				email,
-			}),
-		},
-	);
-	return response.json();
+	)
+		.then((res) => {
+			if (!res.ok) throw new Error("error en la petición");
+			if (res.ok) console.log("Eliminado");
+			return res.json();
+		})
+		.then((data) => {
+			const currentPage = Number(data.info.page);
+			const nextPage = currentPage > 2 ? undefined : currentPage + 1;
+			const newListtUsers: Users[] = data.results.filter(
+				(user: Users) => user.email !== email,
+			);
+			return {
+				users: newListtUsers,
+				nextPage,
+			};
+		});
 };
