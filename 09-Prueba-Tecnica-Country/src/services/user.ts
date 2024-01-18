@@ -1,10 +1,5 @@
 import { Users } from "../types";
 
-interface Props {
-	users: Users[];
-	nextPage?: number;
-}
-
 export const fetchUsers = async ({
 	pageParam,
 }: { pageParam?: number | unknown }) => {
