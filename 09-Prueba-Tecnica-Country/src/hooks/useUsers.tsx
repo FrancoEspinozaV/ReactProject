@@ -3,6 +3,7 @@ import {
 	useMutation,
 	useQueryClient,
 } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { deleteUsers, fetchUsers } from "../services/user";
 import { Users } from "../types";
 interface Props {
@@ -40,7 +41,7 @@ export function useUsers() {
 					pageParams: [data?.pageParams[0]],
 				};
 			});
-
+			toast.success("Eliminación Correcta");
 			return { previousUsers };
 		},
 		onError: (err, newData, context) => {
@@ -48,6 +49,7 @@ export function useUsers() {
 			// err:SyntaxError: Unexpected token 'N', "Not Found" is not valid JSON
 			// newData: {email: 'leni.johansson@example.com', id: 1}
 			// context?.previousUsers undefined
+			toast.error("Error al eliminar el usuario");
 			queryClient.setQueryData(["users"], context?.previousUsers);
 		},
 	});
