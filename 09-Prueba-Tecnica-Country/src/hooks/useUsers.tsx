@@ -33,7 +33,6 @@ export function useUsers() {
 			await queryClient.cancelQueries({ queryKey: ["users"] });
 
 			const previousUsers = queryClient.getQueryData(["users"]);
-			console.log();
 
 			queryClient.setQueryData(["users"], () => {
 				return {

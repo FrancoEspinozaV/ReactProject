@@ -29,7 +29,6 @@ export const deleteUsers = async ({
 	)
 		.then((res) => {
 			if (!res.ok) throw new Error("error en la petición");
-			if (res.ok) console.log("Eliminado");
 			return res.json();
 		})
 		.then((data) => {
