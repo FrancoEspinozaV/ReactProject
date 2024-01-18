@@ -1,7 +1,7 @@
 import {
-	QueryClient,
 	useInfiniteQuery,
 	useMutation,
+	useQueryClient,
 } from "@tanstack/react-query";
 import { deleteUsers, fetchUsers } from "../services/user";
 import { Users } from "../types";
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function useUsers() {
-	const queryClient = new QueryClient();
+	const queryClient = useQueryClient();
 
 	const { isLoading, isError, data, refetch, fetchNextPage, hasNextPage } =
 		useInfiniteQuery<Props>({
@@ -22,8 +22,6 @@ export function useUsers() {
 			refetchOnWindowFocus: false,
 		});
 
-	console.log("Data");
-	console.log(data);
 	const mutation = useMutation({
 		mutationFn: deleteUsers,
 		onMutate: async (variables) => {
@@ -32,36 +30,26 @@ export function useUsers() {
 				(user) => user.email !== variables.email,
 			);
 
-			//await queryClient.cancelQueries({ queryKey: ["users"] });
+			await queryClient.cancelQueries({ queryKey: ["users"] });
 
-			const previusUsers = data;
+			const previousUsers = queryClient.getQueryData(["users"]);
+			console.log();
 
-			const result = queryClient.setQueryData(["users"], () => {
+			queryClient.setQueryData(["users"], () => {
 				return {
 					pages: [{ users: userFilters, nextPage: variables.id }],
 					pageParams: [data?.pageParams[0]],
 				};
 			});
-			console.log("Resultado");
-			console.log(result); // respuesta con el usuario borrado
 
-			return { previusUsers };
+			return { previousUsers };
 		},
 		onError: (err, newData, context) => {
-			console.log(err, newData, context?.previusUsers);
+			console.log(err, newData, context?.previousUsers);
 			// err:SyntaxError: Unexpected token 'N', "Not Found" is not valid JSON
 			// newData: {email: 'leni.johansson@example.com', id: 1}
-			// context?.previusUsers undefined
-			queryClient.setQueryData(["users"], context?.previusUsers);
-		},
-		onSettled: () => {
-			queryClient.setQueryData(["users"], () => {
-				return {
-					pages: [{ users: [], nextPage: 2 }],
-					pageParams: [1],
-				};
-			});
-			console.log("Ejecutado Siempre");
+			// context?.previousUsers undefined
+			queryClient.setQueryData(["users"], context?.previousUsers);
 		},
 	});
 

@@ -1,3 +1,4 @@
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ListOfUsers } from "./components/ListOfUsers";
 import { useUsers } from "./hooks/useUsers";
 import { SortBy, type Users } from "./types.d";
@@ -109,6 +110,7 @@ function App() {
 			)}
 
 			<Toaster richColors />
+			<ReactQueryDevtools />
 		</main>
 	);
 }
