@@ -8,7 +8,7 @@ export function Footers() {
 				<span>
 					Gracias Midu por siempre estar enseñando, ademas a Manuel y Carlos por
 					ayudarme a solucionar un error y las personas del discord de midu que
-					me apoyaron. <LinkDiscord />
+					me apoyaron. <LinkDiscord url="https://discord.com/invite/midudev" />
 				</span>
 				<ul>
 					<li>

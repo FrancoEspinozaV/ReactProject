@@ -1,10 +1,10 @@
 import { Discord } from "../Icons/Discord";
 
-export function LinkDiscord() {
+export function LinkDiscord({ url }: { url: string }) {
 	return (
 		<a
 			className="inline-block border-2 rounded-md translate-y-2"
-			href="discord.gg/midudev"
+			href={url}
 			target="_blank"
 			rel="noreferrer"
 		>
