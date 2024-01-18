@@ -1,4 +1,4 @@
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Footers } from "./components/Footers";
 import { ListOfUsers } from "./components/ListOfUsers";
 import { useUsers } from "./hooks/useUsers";
 import { SortBy, type Users } from "./types.d";
@@ -106,11 +106,13 @@ function App() {
 			{isLoading && <strong>Cargando...</strong>}
 
 			{!isError && !isLoading && hasNextPage === true && (
-				<Button onClick={() => fetchNextPage()}>cargar mas usuarios</Button>
+				<Button className="mt-4" onClick={() => fetchNextPage()}>
+					cargar mas usuarios
+				</Button>
 			)}
 
 			<Toaster richColors />
-			<ReactQueryDevtools />
+			<Footers />
 		</main>
 	);
 }
