@@ -6,7 +6,7 @@ import { Comments } from "./components/Comments";
 import { useComments } from "./hooks/useComments";
 
 function App() {
-	const { data, addPost } = useComments();
+	const { data, addPost, loading } = useComments();
 	const handleClickAddPost = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
@@ -19,7 +19,7 @@ function App() {
 		<main>
 			<form onSubmit={handleClickAddPost}>
 				<Comments />
-				<Button>Comentar</Button>
+				<Button disabled={loading}>Comentar</Button>
 			</form>
 			<CommentResult data={data} />
 			<Toaster richColors />
