@@ -1,0 +1,10 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  max-width: 800px;
+  margin: auto;
+  gap: 15px;
+  margin-top: 60px;
+}
