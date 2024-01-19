@@ -10,10 +10,12 @@ function App() {
 	const handleClickAddPost = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
+		const form = event.currentTarget;
 		const data = new FormData(event.currentTarget);
 		const message = data.get("message")?.toString() ?? "";
 		const title = data.get("title")?.toString() ?? "";
 		addPost({ title, message });
+		form.reset();
 	};
 	return (
 		<main>
