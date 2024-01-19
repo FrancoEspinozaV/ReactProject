@@ -3,9 +3,13 @@ export function Comments() {
 	return (
 		<Card className="rounded-md">
 			<Title>Titulo</Title>
-			<TextInput placeholder="Hoy me siento feliz" name="title" />
+			<TextInput required placeholder="Hoy me siento feliz" name="title" />
 			<Title>Comentario</Title>
-			<TextInput placeholder="He aprendido programación" name="message" />
+			<TextInput
+				required
+				placeholder="He aprendido programación"
+				name="message"
+			/>
 		</Card>
 	);
 }
