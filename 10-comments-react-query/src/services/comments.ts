@@ -1,4 +1,4 @@
-import { MasterKey, myRute } from "../data";
+import { MasterKey, myRute } from "../../data";
 import { type Comment } from "../interface.d";
 export async function getComments() {
 	const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {

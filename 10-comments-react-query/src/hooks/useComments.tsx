@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { type Comment, type CommentWithId } from "../interface.d";
 import { getComments, postComment } from "../services/comments";
 
@@ -23,11 +24,13 @@ export function useComments() {
 				newComment,
 			]);
 
+			toast.success("Se agrego el comentario 😀");
 			// Return a context object with the snapshotted value
 			return { previousComment };
 		},
 		onError: (err, newComment, context) => {
 			console.log(err, newComment);
+			toast.error("Algo salio mal 😥");
 			queryClient.setQueryData(["comments"], context?.previousComment);
 		},
 		onSettled: () => {

@@ -1,4 +1,5 @@
 import { Button } from "@tremor/react";
+import { Toaster } from "sonner";
 import "./app.css";
 import { CommentResult } from "./components/CommentResult";
 import { Comments } from "./components/Comments";
@@ -21,6 +22,7 @@ function App() {
 				<Button>Comentar</Button>
 			</form>
 			<CommentResult data={data} />
+			<Toaster richColors />
 		</main>
 	);
 }
