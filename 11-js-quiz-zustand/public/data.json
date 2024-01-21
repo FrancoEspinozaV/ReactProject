@@ -1,0 +1,326 @@
+[
+  {
+    "id": 1,
+    "question": "¿Cuál es el resultado del siguiente código?",
+    "code": "console.log(typeof NaN)",
+    "answers": [
+      "undefined",
+      "NaN",
+      "string",
+      "number"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 2,
+    "question": "¿Cuál es el resultado del siguiente código?",
+    "code": "let x = 5;\nconsole.log(x++ + ++x);",
+    "answers": [
+      "10",
+      "11",
+      "12",
+      "13"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 3,
+    "question": "¿Qué imprimirá el siguiente código?",
+    "code": "for (let i = 0; i < 5; i++) {\n  setTimeout(() => console.log(i), 1000);\n}",
+    "answers": [
+      "0, 1, 2, 3, 4",
+      "0, 5, 1, 2, 3, 4",
+      "1, 2, 3, 4, 5",
+      "5, 5, 5, 5, 5, 5"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 4,
+    "question": "¿Cuál es el resultado de esta operación?",
+    "code": "console.log('2' + 2);",
+    "answers": [
+      "22",
+      "4",
+      "Error",
+      "NaN"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 5,
+    "question": "¿Cuál será la salida del siguiente código?",
+    "code": "let y = 2;\nlet x = y * 3;\nconsole.log(x);",
+    "answers": [
+      "6",
+      "8",
+      "2",
+      "undefined"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 6,
+    "question": "¿Qué imprimirá el siguiente código?",
+    "code": "let x = 10;\nfunction foo() {\n  console.log(x);\n}\nfunction bar() {\n  let x = 20;\n  foo();\n}\nbar();",
+    "answers": [
+      "10",
+      "20",
+      "Error",
+      "Undefined"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 7,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "console.log(3 === '3');",
+    "answers": [
+      "true",
+      "false",
+      "Error",
+      "Undefined"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 8,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "console.log(0.1 + 0.2 === 0.3);",
+    "answers": [
+      "true",
+      "false",
+      "Error",
+      "Undefined"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 9,
+    "question": "¿Cuál será el valor de x después de ejecutar el código?",
+    "code": "let x = 10;\nif (true) {\n  let x = 20;\n}\nconsole.log(x);",
+    "answers": [
+      "10",
+      "20",
+      "undefined",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 10,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "console.log(typeof([]));",
+    "answers": [
+      "array",
+      "object",
+      "undefined",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 11,
+    "question": "¿Cuál es el resultado del siguiente código?",
+    "code": "console.log('10' == 10);",
+    "answers": [
+      "true",
+      "false",
+      "Error",
+      "Undefined"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 12,
+    "question": "¿Qué imprimirá el siguiente código?",
+    "code": "let x = 'Hello';\nconsole.log(x.charAt(0));",
+    "answers": [
+      "'H'",
+      "'e'",
+      "'o'",
+      "'undefined'"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 13,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "console.log(Math.min());",
+    "answers": [
+      "0",
+      "undefined",
+      "Error",
+      "Infinity"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 14,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "console.log(Boolean('false'));",
+    "answers": [
+      "true",
+      "false",
+      "Error",
+      "Undefined"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 15,
+    "question": "¿Qué imprimirá el siguiente código?",
+    "code": "let x = [1, 2, 3];\nlet y = x;\ny[0] = 0;\nconsole.log(x[0]);",
+    "answers": [
+      "1",
+      "0",
+      "3",
+      "Undefined"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 16,
+    "question": "¿Qué imprimirá el siguiente código?",
+    "code": "console.log('abc'.toUpperCase());",
+    "answers": [
+      "'abc'",
+      "'ABC'",
+      "'undefined'",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 17,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "let x;\nconsole.log(x + 1);",
+    "answers": [
+      "undefined",
+      "Error",
+      "1",
+      "NaN"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 18,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "console.log(4 + '4' - 2);",
+    "answers": [
+      "44",
+      "42",
+      "Error",
+      "2"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 19,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "let x = 2;\nconsole.log(x ** 3);",
+    "answers": [
+      "6",
+      "8",
+      "Error",
+      "Undefined"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 20,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "let a = 'Hola';\nlet b = 'Mundo';\nconsole.log(`${a} ${b}`);",
+    "answers": [
+      "'Hola Mundo'",
+      "'HolaMundo'",
+      "'Hola' 'Mundo'",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 21,
+    "question": "¿Cuál es el resultado de esta expresión?",
+    "code": "true + false",
+    "answers": [
+      "true",
+      "false",
+      "1",
+      "0"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 22,
+    "question": "¿Cuál es el resultado del siguiente código?",
+    "code": "console.log(10 / '2');",
+    "answers": [
+      "5",
+      "Error",
+      "'5'",
+      "2"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 23,
+    "question": "¿Qué imprimirá este código?",
+    "code": "let a = [1, 2, 3];\nlet b = a;\nb.push(4);\nconsole.log(b.length);",
+    "answers": [
+      "3",
+      "4",
+      "Error",
+      "undefined"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 24,
+    "question": "¿Cuál es el resultado de la operación bitwise XOR ( ^ )?",
+    "code": "console.log(5 ^ 3);",
+    "answers": [
+      "8",
+      "6",
+      "2",
+      "1"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 25,
+    "question": "¿Cuál es la salida del siguiente código?",
+    "code": "let x = [1, 2, 3];\nconsole.log(typeof x);",
+    "answers": [
+      "'object'",
+      "'array'",
+      "'number'",
+      "'undefined'"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 26,
+    "question": "¿Cuál es el valor de 'z' al final del código?",
+    "code": "let x = 5;\nlet y = 3;\nlet z = x > y ? x : y;",
+    "answers": [
+      "5",
+      "3",
+      "undefined",
+      "8"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 27,
+    "question": "¿Qué imprimirá este código?",
+    "code": "console.log([1, 2] + [3, 4]);",
+    "answers": [
+      "'1,23,4'",
+      "'1, 2, 3, 4'",
+      "'[1, 2, 3, 4]'",
+      "'undefined'"
+    ],
+    "correctAnswer": 0
+  }
+]
