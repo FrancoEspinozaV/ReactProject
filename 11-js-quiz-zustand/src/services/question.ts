@@ -10,6 +10,7 @@ interface State {
 	selectdAnswer: (questionId: number, answerIndex: number) => void;
 	goNextQuestion: () => void;
 	goPreviousQuestion: () => void;
+	resetGame: () => void;
 }
 export const useQuestionsStore = create<State>()(
 	persist(
@@ -63,6 +64,10 @@ export const useQuestionsStore = create<State>()(
 					if (nextQuestion >= 0) {
 						set({ currentQuestion: nextQuestion });
 					}
+				},
+
+				resetGame: () => {
+					set({ questions: [], currentQuestion: 0 });
 				},
 			};
 		},
