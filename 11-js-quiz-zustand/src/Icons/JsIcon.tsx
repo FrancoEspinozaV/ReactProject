@@ -5,6 +5,7 @@ export function JsIcon() {
 			viewBox="0 0 630 630"
 			width={48}
 			height={48}
+			style={{ marginRight: "10px" }}
 		>
 			<title>javaScript Icon</title>
 			<rect width="630" height="630" fill="#f7df1e" />
