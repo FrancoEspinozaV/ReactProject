@@ -54,7 +54,9 @@ input {
   cursor: default;
   border: 1px solid #555;
 }
-
+input::placeholder {
+  text-align: center;
+}
 button:hover {
   border-color: #646cff;
 }
