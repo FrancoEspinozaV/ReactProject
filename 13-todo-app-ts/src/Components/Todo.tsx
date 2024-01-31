@@ -1,17 +1,31 @@
-import { type Todo as TodoType } from '../types.d'
+import {
+  type TodoCompleted,
+  type TodoId,
+  type Todo as TodoType,
+} from '../types.d'
 
 interface Props extends TodoType {
-  removeTodo: (id: string) => void
+  removeTodo: (id: TodoId) => void
+  completedTodo: (id: TodoId, completed: TodoCompleted) => void
 }
 
-export function Todo({ id, title, completed, removeTodo }: Props) {
+export function Todo({
+  id,
+  title,
+  completed,
+  removeTodo,
+  completedTodo,
+}: Props) {
+  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
+    completedTodo(id, event.target.checked)
+  }
   return (
     <div className='view'>
       <input
         className='toggle'
         type='checkbox'
         checked={completed}
-        onChange={() => {}}
+        onChange={handleCheck}
       />
       <label>{title}</label>
       <button

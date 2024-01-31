@@ -1,12 +1,13 @@
-import { type ListOfTodo } from '../types.d'
+import { type TodoId, type ListOfTodo, type TodoCompleted } from '../types.d'
 import { Todo } from './Todo'
 
 interface Props {
   todos: ListOfTodo
-  removeTodo: (id: string) => void
+  removeTodo: (id: TodoId) => void
+  completedTodo: (id: TodoId, completed: TodoCompleted) => void
 }
 
-export function Todos({ todos, removeTodo }: Props) {
+export function Todos({ todos, removeTodo, completedTodo }: Props) {
   return (
     <ul className='todo-list'>
       {todos.map((todo) => (
@@ -17,6 +18,7 @@ export function Todos({ todos, removeTodo }: Props) {
             title={todo.title}
             completed={todo.completed}
             removeTodo={removeTodo}
+            completedTodo={completedTodo}
           />
         </li>
       ))}
