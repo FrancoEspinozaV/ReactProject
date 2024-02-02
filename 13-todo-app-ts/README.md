@@ -11,7 +11,7 @@
 - [x] Añadir forma de borrar todos los TODOs completados
 - [x] Crear Header con input (Header)
 - [x] Crear un TODO (header)
-- [ ] Poder editar el texto de un TODO (doble click)
-- [ ] Añadir animación con AutoAnimate
+- [x] Poder editar el texto de un TODO (doble click)
+- [x] Añadir animación con AutoAnimate
 - [ ] Pasar a Reducer
-- [ ] Sincronizar con Backend
+- [ ] Sincronizar con Backend (jsonbin)
