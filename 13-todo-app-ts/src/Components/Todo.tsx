@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   type TodoCompleted,
   type TodoId,
@@ -16,9 +17,25 @@ export function Todo({
   removeTodo,
   completedTodo,
 }: Props) {
+  const [editing, setEditing] = useState(false)
+  const [newTitle, setNewTitle] = useState(title)
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
     completedTodo(id, event.target.checked)
   }
+
+  const checkDoubleClick = () => {
+    setEditing(true)
+  }
+
+  const handleInputBlur = () => {
+    setEditing(false)
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setNewTitle(newTitle)
+  }
+
   return (
     <div className='view'>
       <input
@@ -27,7 +44,22 @@ export function Todo({
         checked={completed}
         onChange={handleCheck}
       />
-      <label>{title}</label>
+      {editing ? ( // TODO: agregar funcionalidad con enter
+        <form onSubmit={handleSubmit}>
+          <input
+            className='new-todo'
+            value={newTitle}
+            onChange={(e) => {
+              setNewTitle(e.target.value)
+            }}
+            onBlur={handleInputBlur}
+            placeholder='¿Que quieres haces?'
+            autoFocus
+          />
+        </form>
+      ) : (
+        <label onDoubleClick={checkDoubleClick}>{newTitle}</label>
+      )}
       <button
         className='destroy'
         onClick={() => {
