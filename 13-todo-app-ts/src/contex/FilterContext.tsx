@@ -3,6 +3,8 @@ import { useFilters } from '../hooks/useFilters'
 import { FiltersTodo, ListOfTodo } from '../types'
 
 interface FilterType {
+  activeCount: number
+  completedCount: number
   filteredTodo: ListOfTodo
   filterSelected: FiltersTodo
   handleFilterChange: (filter: FiltersTodo) => void
@@ -11,10 +13,22 @@ interface FilterType {
 export const filterContext = createContext<FilterType>({} as FilterType)
 
 export function FilterContextProvider({ children }: { children: JSX.Element }) {
-  const { filteredTodo, filterSelected, handleFilterChange } = useFilters()
+  const {
+    activeCount,
+    completedCount,
+    filteredTodo,
+    filterSelected,
+    handleFilterChange,
+  } = useFilters()
   return (
     <filterContext.Provider
-      value={{ filteredTodo, filterSelected, handleFilterChange }}
+      value={{
+        activeCount,
+        completedCount,
+        filteredTodo,
+        filterSelected,
+        handleFilterChange,
+      }}
     >
       {children}
     </filterContext.Provider>

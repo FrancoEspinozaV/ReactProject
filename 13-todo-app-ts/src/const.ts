@@ -18,3 +18,10 @@ export const FILTERS_BUTTONS = {
     href: `/?filters=${TODO_FILTERS.COMPLETED}`,
   },
 } as const
+
+export const ACTIONS_TODO = {
+  REMOVE: 'REMOVE_TODO',
+  COMPLETED: 'COMPLETED_TODO',
+  REMOVE_COMPLETED: 'REMOVE_COMPLETED_TODO',
+  ADD: 'ADD_TODO',
+} as const

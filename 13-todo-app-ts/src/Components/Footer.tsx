@@ -1,8 +1,10 @@
+import { useFilterContext } from '../contex/FilterContext'
 import { useTodoContext } from '../contex/TodoContext'
 import { Filters } from './Filters'
 
 export function Footer() {
-  const { activeCount, completedCount, removeCompleted } = useTodoContext()
+  const { removeCompleted } = useTodoContext()
+  const { activeCount, completedCount } = useFilterContext()
   return (
     <footer className='footer'>
       <span className='todo-count'>

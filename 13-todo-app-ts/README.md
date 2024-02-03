@@ -14,7 +14,7 @@
 - [x] Poder editar el texto de un TODO (doble click)
 - [x] Añadir animación con AutoAnimate
 - [x] Crear un contexto
-- [ ] Pasar a Reducer
-- [ ] Quitar el prop drilling
+- [x] Quitar el props drilling
+- [x] Pasar a Reducer
 - [ ] Sincronizar con Backend (jsonbin)
 - [ ] Crear test

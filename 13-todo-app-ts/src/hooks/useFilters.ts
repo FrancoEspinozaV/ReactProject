@@ -4,6 +4,7 @@ import { TODO_FILTERS } from '../const'
 import { useTodoContext } from '../contex/TodoContext'
 
 export function useFilters() {
+  // ¿Es necesario utilizar reducer aquí?
   const { todos } = useTodoContext()
   const [filterSelected, setFilterSelected] = useState<FiltersTodo>(
     TODO_FILTERS.ALL
@@ -15,11 +16,16 @@ export function useFilters() {
     return todo
   })
 
+  const activeCount = todos.filter((todo) => !todo.completed).length
+  const completedCount = todos.length - activeCount
+
   const handleFilterChange = (filter: FiltersTodo) => {
     setFilterSelected(filter)
   }
 
   return {
+    activeCount,
+    completedCount,
     filterSelected,
     filteredTodo,
     handleFilterChange,

@@ -1,8 +1,16 @@
 import { useState } from 'react'
-import { type Todo as TodoType } from '../types.d'
+import { TodoCompleted, TodoId, TodoTitle } from '../types.d'
 import { useTodoContext } from '../contex/TodoContext'
 
-export function Todo({ id, title, completed }: TodoType) {
+export function Todo({
+  id,
+  title,
+  completed,
+}: {
+  id: TodoId
+  title: TodoTitle
+  completed: TodoCompleted
+}) {
   const [editing, setEditing] = useState(false)
   const [newTitle, setNewTitle] = useState(title)
   const { removeTodo, completedTodo } = useTodoContext()

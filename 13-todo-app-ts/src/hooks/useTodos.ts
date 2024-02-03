@@ -1,68 +1,32 @@
-import { useState } from 'react'
-import { TodoCompleted, TodoId, TodoTitle } from '../types'
-
-const MocksTodo = [
-  {
-    id: '1',
-    title: 'Todo 1',
-    completed: false,
-  },
-  {
-    id: '2',
-    title: 'Todo 2',
-    completed: true,
-  },
-  {
-    id: '3',
-    title: 'Todo 3',
-    completed: false,
-  },
-]
+import { useReducer } from 'react'
+import { Todo, TodoCompleted, TodoId, TodoTitle } from '../types'
+import { ACTIONS_TODO } from '../const'
+import { initialState, reducer } from '../reducers/todo'
 
 export function useTodos() {
-  const [todos, setTodos] = useState(MocksTodo)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   const removeTodo = (id: TodoId) => {
-    const newTodos = todos.filter((todo) => todo.id !== id)
-    setTodos(newTodos)
+    dispatch({ type: ACTIONS_TODO.REMOVE, payload: { id } })
   }
 
   const completedTodo = (id: TodoId, completed: TodoCompleted) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id)
-        return {
-          ...todo,
-          completed,
-        }
-      return todo
+    dispatch({
+      type: ACTIONS_TODO.COMPLETED,
+      payload: { id, completed } as Todo,
     })
-
-    setTodos(newTodos)
   }
 
   const removeCompleted = () => {
-    const newTodo = todos.filter((todo) => !todo.completed)
-    setTodos(newTodo)
+    dispatch({ type: ACTIONS_TODO.REMOVE_COMPLETED, payload: {} })
   }
 
-  const activeCount = todos.filter((todo) => !todo.completed).length
-  const completedCount = todos.length - activeCount
-
   const addTodo = (title: TodoTitle) => {
-    const newTodo = {
-      title,
-      id: crypto.randomUUID(),
-      completed: false,
-    }
-
-    const newTodos = [...todos, newTodo]
-    setTodos(newTodos)
+    dispatch({ type: ACTIONS_TODO.ADD, payload: { title } })
   }
 
   return {
-    todos,
-    activeCount,
-    completedCount,
+    todos: state,
     removeCompleted,
     removeTodo,
     completedTodo,

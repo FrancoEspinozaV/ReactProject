@@ -4,8 +4,6 @@ import { ListOfTodo, TodoCompleted, TodoId, TodoTitle } from '../types'
 
 interface TodoContextType {
   todos: ListOfTodo
-  activeCount: number
-  completedCount: number
   removeCompleted: () => void
   removeTodo: (id: TodoId) => void
   completedTodo: (id: TodoId, completed: TodoCompleted) => void
@@ -15,21 +13,12 @@ interface TodoContextType {
 export const TodoContext = createContext<TodoContextType>({} as TodoContextType)
 
 export function TodoProvider({ children }: { children: JSX.Element }) {
-  const {
-    todos,
-    activeCount,
-    completedCount,
-    removeCompleted,
-    removeTodo,
-    completedTodo,
-    addTodo,
-  } = useTodos()
+  const { todos, removeCompleted, removeTodo, completedTodo, addTodo } =
+    useTodos()
   return (
     <TodoContext.Provider
       value={{
         todos,
-        activeCount,
-        completedCount,
         removeCompleted,
         removeTodo,
         completedTodo,
