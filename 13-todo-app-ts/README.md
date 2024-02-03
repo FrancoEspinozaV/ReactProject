@@ -13,5 +13,8 @@
 - [x] Crear un TODO (header)
 - [x] Poder editar el texto de un TODO (doble click)
 - [x] Añadir animación con AutoAnimate
+- [x] Crear un contexto
 - [ ] Pasar a Reducer
+- [ ] Quitar el prop drilling
 - [ ] Sincronizar con Backend (jsonbin)
+- [ ] Crear test

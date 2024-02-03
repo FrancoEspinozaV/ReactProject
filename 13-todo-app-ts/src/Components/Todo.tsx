@@ -1,24 +1,12 @@
 import { useState } from 'react'
-import {
-  type TodoCompleted,
-  type TodoId,
-  type Todo as TodoType,
-} from '../types.d'
+import { type Todo as TodoType } from '../types.d'
+import { useTodoContext } from '../contex/TodoContext'
 
-interface Props extends TodoType {
-  removeTodo: (id: TodoId) => void
-  completedTodo: (id: TodoId, completed: TodoCompleted) => void
-}
-
-export function Todo({
-  id,
-  title,
-  completed,
-  removeTodo,
-  completedTodo,
-}: Props) {
+export function Todo({ id, title, completed }: TodoType) {
   const [editing, setEditing] = useState(false)
   const [newTitle, setNewTitle] = useState(title)
+  const { removeTodo, completedTodo } = useTodoContext()
+
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
     completedTodo(id, event.target.checked)
   }

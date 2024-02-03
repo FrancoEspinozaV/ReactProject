@@ -1,15 +1,13 @@
 import { useState } from 'react'
-import { type TodoTitle } from '../types.d'
+import { useTodoContext } from '../contex/TodoContext'
 
-interface Props {
-  saveTodo: (title: TodoTitle) => void
-}
-export function CreateTodo({ saveTodo }: Props) {
+export function CreateTodo() {
+  const { addTodo } = useTodoContext()
   const [inputValue, setInputValue] = useState('')
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    saveTodo(inputValue)
+    addTodo(inputValue)
     setInputValue('')
   }
 

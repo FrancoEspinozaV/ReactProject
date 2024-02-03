@@ -1,12 +1,9 @@
 import { type FiltersTodo } from '../types.d'
 import { FILTERS_BUTTONS } from '../const'
+import { useFilterContext } from '../contex/FilterContext'
 
-interface Props {
-  filterSelected: FiltersTodo
-  onFilterChange: (filter: FiltersTodo) => void
-}
-
-export function Filters({ filterSelected, onFilterChange }: Props) {
+export function Filters() {
+  const { filterSelected, handleFilterChange } = useFilterContext()
   return (
     <ul className='filters'>
       {Object.entries(FILTERS_BUTTONS).map(([key, { href, literal }]) => {
@@ -19,7 +16,7 @@ export function Filters({ filterSelected, onFilterChange }: Props) {
               href={href}
               onClick={(event) => {
                 event.preventDefault()
-                onFilterChange(key as FiltersTodo)
+                handleFilterChange(key as FiltersTodo)
               }}
             >
               {literal}
