@@ -1,35 +1,24 @@
 import { ACTIONS_TODO } from '../const'
+import {
+  addTodos,
+  completedTodos,
+  deleteTodos,
+  getTodos,
+} from '../services/todoList'
 import { ListOfTodo, Todo } from '../types'
-
-const MocksTodo = [
-  {
-    id: '1',
-    title: 'Todo 1',
-    completed: false,
-  },
-  {
-    id: '2',
-    title: 'Todo 2',
-    completed: true,
-  },
-  {
-    id: '3',
-    title: 'Todo 3',
-    completed: false,
-  },
-]
 
 interface ActionType {
   type: string
   payload: Todo
 }
 
-export const initialState = MocksTodo
+export const initialState = await getTodos()
 
 export const reducer = (state: ListOfTodo, action: ActionType) => {
   const { type, payload } = action
   if (type === ACTIONS_TODO.REMOVE) {
     const newTodos = state.filter((todo) => todo.id !== payload?.id)
+    deleteTodos({ todos: newTodos })
     return newTodos
   }
 
@@ -42,12 +31,14 @@ export const reducer = (state: ListOfTodo, action: ActionType) => {
         }
       return todo
     })
+    completedTodos({ todos: newTodos })
     return newTodos
   }
 
   if (type === ACTIONS_TODO.REMOVE_COMPLETED) {
-    const newTodo = state.filter((todo) => !todo.completed)
-    return newTodo
+    const newTodos = state.filter((todo) => !todo.completed)
+    deleteTodos({ todos: newTodos })
+    return newTodos
   }
 
   if (type === ACTIONS_TODO.ADD) {
@@ -58,6 +49,7 @@ export const reducer = (state: ListOfTodo, action: ActionType) => {
     }
 
     const newTodos = [...state, newTodo]
+    addTodos({ todos: newTodos })
     return newTodos
   }
 

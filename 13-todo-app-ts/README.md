@@ -16,5 +16,6 @@
 - [x] Crear un contexto
 - [x] Quitar el props drilling
 - [x] Pasar a Reducer
-- [ ] Sincronizar con Backend (jsonbin)
+- [x] Sincronizar con Backend (jsonbin)
+- [ ] Utilizar @tanstack/react-query
 - [ ] Crear test
