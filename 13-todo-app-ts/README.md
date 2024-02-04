@@ -17,5 +17,8 @@
 - [x] Quitar el props drilling
 - [x] Pasar a Reducer
 - [x] Sincronizar con Backend (jsonbin)
-- [ ] Utilizar @tanstack/react-query
+- [x] Utilizar @tanstack/react-query
 - [ ] Crear test
+
+> [!NOTE]
+> Al utilizar `react-query` No logré utilizar `reduce`, por lo tanto se elimino

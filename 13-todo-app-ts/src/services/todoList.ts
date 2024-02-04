@@ -1,10 +1,10 @@
-import { ListOfTodo } from '../types'
-// JSON BIN
-const myRute = 'BIN ID'
-const MasterKey = 'YOUR MASTER KEY'
-const AccesKey = 'YOUR ACCES KEY'
+import { ListOfTodo, TodoCompleted, TodoId, TodoTitle } from '../types'
 
-export async function getTodos() {
+const myRute = '65bdac4fdc746540189f8b87'
+const MasterKey = '$2a$10$oeoIIJQHG/GRRlCPFHuJW.8yzwsL4PaTihPVli8PGaGjUu37N9RVm'
+const AccesKey = '$2a$10$qNNFjarxA46KaO63NlGHtudbwWx5mwFdoJQ33QftutpXt.JvO9Aqu'
+
+export async function getTodos(): Promise<ListOfTodo> {
   const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {
     method: 'GET',
     headers: {
@@ -20,22 +20,36 @@ export async function getTodos() {
   return json?.record
 }
 
-export async function deleteTodos({ todos }: { todos: ListOfTodo }) {
+export async function deleteTodos(id: TodoId) {
+  const todos = await getTodos()
+  const newTodos = todos.filter((todo) => todo.id !== id)
   if (todos.length > 0) {
-    updateTodos({ todos })
+    const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-key': MasterKey,
+        'X-Access-Key': AccesKey,
+      },
+      body: JSON.stringify(newTodos),
+    })
+
+    if (!response.ok) throw new Error('Failed to fetch add TODOs.')
+    const json = await response.json()
+
+    return json?.record
   }
   throw new Error('Debe quedar al menos un elemento')
 }
 
-export async function addTodos({ todos }: { todos: ListOfTodo }) {
-  updateTodos({ todos })
-}
-
-export async function completedTodos({ todos }: { todos: ListOfTodo }) {
-  updateTodos({ todos })
-}
-
-export async function updateTodos({ todos }: { todos: ListOfTodo }) {
+export async function addTodos(title: TodoTitle) {
+  const todos = await getTodos()
+  const newTodo = {
+    id: crypto.randomUUID(),
+    title,
+    completed: false,
+  }
+  const newTodos = [...todos, newTodo]
   const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {
     method: 'PUT',
     headers: {
@@ -43,7 +57,59 @@ export async function updateTodos({ todos }: { todos: ListOfTodo }) {
       'X-Master-key': MasterKey,
       'X-Access-Key': AccesKey,
     },
-    body: JSON.stringify(todos),
+    body: JSON.stringify(newTodos),
+  })
+
+  if (!response.ok) throw new Error('Failed to fetch add TODOs.')
+  const json = await response.json()
+
+  return json?.record
+}
+interface PropCompleted {
+  id: TodoId
+  completed: TodoCompleted
+}
+export async function completedTodos(idCompleted: PropCompleted) {
+  const { id, completed } = idCompleted
+
+  const todos = await getTodos()
+  const newTodos = todos.map((todo) => {
+    if (todo.id === id) {
+      return {
+        ...todo,
+        completed,
+      }
+    }
+    return todo
+  })
+
+  const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-key': MasterKey,
+      'X-Access-Key': AccesKey,
+    },
+    body: JSON.stringify(newTodos),
+  })
+
+  if (!response.ok) throw new Error('Failed to fetch add TODOs.')
+  const json = await response.json()
+
+  return json?.record
+}
+
+export async function removeCompletedTodos() {
+  const todos = await getTodos()
+  const newTodos = todos.filter((todo) => !todo.completed)
+  const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-key': MasterKey,
+      'X-Access-Key': AccesKey,
+    },
+    body: JSON.stringify(newTodos),
   })
 
   if (!response.ok) throw new Error('Failed to fetch add TODOs.')

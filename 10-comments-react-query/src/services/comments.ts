@@ -2,6 +2,7 @@ import { toast } from "sonner";
 import { MasterKey, myRute } from "../../data";
 import { CommentWithId, type Comment } from "../interface.d";
 export async function getComments() {
+	console.log("GetComments");
 	const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {
 		method: "GET",
 		headers: {

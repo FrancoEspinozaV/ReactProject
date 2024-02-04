@@ -1,9 +1,9 @@
 import { useFilterContext } from '../contex/FilterContext'
-import { useTodoContext } from '../contex/TodoContext'
+import { useTodos } from '../hooks/useTodos'
 import { Filters } from './Filters'
 
 export function Footer() {
-  const { removeCompleted } = useTodoContext()
+  const { removeCompleted } = useTodos()
   const { activeCount, completedCount } = useFilterContext()
   return (
     <footer className='footer'>

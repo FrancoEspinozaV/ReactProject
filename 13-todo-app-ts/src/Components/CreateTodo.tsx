@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { useTodoContext } from '../contex/TodoContext'
+import { useTodos } from '../hooks/useTodos'
 
 export function CreateTodo() {
-  const { addTodo } = useTodoContext()
+  const { addTodo } = useTodos()
   const [inputValue, setInputValue] = useState('')
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

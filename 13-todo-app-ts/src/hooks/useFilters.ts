@@ -1,15 +1,13 @@
 import { useState } from 'react'
 import { FiltersTodo } from '../types'
 import { TODO_FILTERS } from '../const'
-import { useTodoContext } from '../contex/TodoContext'
-
+import { useTodos } from '../hooks/useTodos'
 export function useFilters() {
-  // ¿Es necesario utilizar reducer aquí?
-  const { todos } = useTodoContext()
+  const { todos } = useTodos()
+
   const [filterSelected, setFilterSelected] = useState<FiltersTodo>(
     TODO_FILTERS.ALL
   )
-
   const filteredTodo = todos.filter((todo) => {
     if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed
     if (filterSelected === TODO_FILTERS.COMPLETED) return todo.completed

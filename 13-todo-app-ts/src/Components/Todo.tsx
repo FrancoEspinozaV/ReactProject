@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TodoCompleted, TodoId, TodoTitle } from '../types.d'
-import { useTodoContext } from '../contex/TodoContext'
+import { useTodos } from '../hooks/useTodos'
 
 export function Todo({
   id,
@@ -13,10 +13,11 @@ export function Todo({
 }) {
   const [editing, setEditing] = useState(false)
   const [newTitle, setNewTitle] = useState(title)
-  const { removeTodo, completedTodo } = useTodoContext()
+  const { removeTodo, completedTodo } = useTodos()
 
   const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    completedTodo(id, event.target.checked)
+    const completed = event.target.checked
+    completedTodo({ id, completed })
   }
 
   const checkDoubleClick = () => {
