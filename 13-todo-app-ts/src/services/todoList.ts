@@ -1,8 +1,8 @@
 import { ListOfTodo, TodoCompleted, TodoId, TodoTitle } from '../types'
 
-const myRute = '65bdac4fdc746540189f8b87'
-const MasterKey = '$2a$10$oeoIIJQHG/GRRlCPFHuJW.8yzwsL4PaTihPVli8PGaGjUu37N9RVm'
-const AccesKey = '$2a$10$qNNFjarxA46KaO63NlGHtudbwWx5mwFdoJQ33QftutpXt.JvO9Aqu'
+const myRute = 'BIN ID'
+const MasterKey = '$YOUR_MASTER_KEY'
+const AccesKey = 'YOUR_ACCES_KEY'
 
 export async function getTodos(): Promise<ListOfTodo> {
   const response = await fetch(`https://api.jsonbin.io/v3/b/${myRute}`, {
