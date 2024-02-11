@@ -7,19 +7,17 @@ import { useTodos } from './hooks/useTodos'
 function App() {
   const { todos } = useTodos()
   return (
-    <FilterContextProvider>
-      <div className='todoapp'>
-        <Header />
+    <div className='todoapp'>
+      <Header />
 
-        {todos?.length !== 0 ? (
-          <Todos />
-        ) : (
-          <strong>No tiene tareas agrega una :D </strong>
-        )}
+      {todos?.length !== 0 ? (
+        <Todos />
+      ) : (
+        <strong>No tiene tareas agrega una :D </strong>
+      )}
 
-        <Footer />
-      </div>
-    </FilterContextProvider>
+      <Footer />
+    </div>
   )
 }
 

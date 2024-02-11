@@ -19,7 +19,7 @@ export function useTodos() {
   })
 
   const queryClient = useQueryClient()
-
+  // TODO: crear custom hooks de los mutate, asi retornar los isloading y controlar las acciones
   const mutateAdd = useMutation({
     mutationFn: addTodos,
     onMutate: async (newTitle) => {
