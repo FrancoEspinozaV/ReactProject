@@ -21,7 +21,7 @@ function App() {
 			<h1 className="text-3xl">Poke API</h1>
 
 			{isLoading && <p>Cargando...</p>}
-			{selectedType.length === 0 && <p>No existen datos</p>}
+			{!isLoading && selectedType.length === 0 && <p>No existen datos</p>}
 			{!isLoading && (
 				<Filters
 					handleChangeHeight={handleChangeHeight}
