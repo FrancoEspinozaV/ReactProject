@@ -2,10 +2,10 @@ import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
-	InputAdornment,
 	TextField,
 	Typography,
 } from "@mui/material";
+import { FiltersNumbers } from "./FiltersNumbers";
 import { TypeSelect } from "./TypeSelect";
 
 interface Props {
@@ -23,38 +23,10 @@ export function Filters({
 	handleChangeHeight,
 	handleChangeWeight,
 }: Props) {
-	const changeId = (
-		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		const valueNumber = Number(event.target.value);
-
-		if (valueNumber >= 0) {
-			handleChangeId(valueNumber);
-		}
-	};
-
 	const changeName = (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		hangleChangeName(event.target.value);
-	};
-
-	const changeWeight = (
-		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		const weight = Number(event.target.value);
-		if (weight >= 0) {
-			handleChangeWeight(weight);
-		}
-	};
-
-	const changeHeight = (
-		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		const height = Number(event.target.value);
-		if (height >= 0) {
-			handleChangeHeight(height);
-		}
 	};
 
 	return (
@@ -73,38 +45,11 @@ export function Filters({
 							variant="outlined"
 							onChange={(event) => changeName(event)}
 						/>
-						<div style={{ display: "flex", gap: 5 }}>
-							<TextField
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">ID</InputAdornment>
-									),
-								}}
-								label="id pokemon"
-								variant="outlined"
-								onChange={(event) => changeId(event)}
-							/>
-							<TextField
-								label="altura"
-								variant="outlined"
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">M</InputAdornment>
-									),
-								}}
-								onChange={(event) => changeHeight(event)}
-							/>
-							<TextField
-								label="peso"
-								variant="outlined"
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">KG</InputAdornment>
-									),
-								}}
-								onChange={(event) => changeWeight(event)}
-							/>
-						</div>
+						<FiltersNumbers
+							handleChangeHeight={handleChangeHeight}
+							handleChangeId={handleChangeId}
+							handleChangeWeight={handleChangeWeight}
+						/>
 					</AccordionDetails>
 				</Accordion>
 			</div>
