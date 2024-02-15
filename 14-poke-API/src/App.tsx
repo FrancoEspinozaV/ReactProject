@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import "./App.css";
 import { Filters } from "./components/Filters";
 import { TablePoke } from "./components/TablePoke";
@@ -14,12 +14,11 @@ function App() {
 		hangleChangeName,
 		handleChangeWeight,
 	} = useFilters();
-
 	return (
 		<main>
 			<h1 className="text-3xl">Poke API</h1>
 
-			{isLoading && <p>Cargando...</p>}
+			{isLoading && <CircularProgress color="success" />}
 			{!isLoading && selectedType.length === 0 && <p>No existen datos</p>}
 			{!isLoading && (
 				<Filters
