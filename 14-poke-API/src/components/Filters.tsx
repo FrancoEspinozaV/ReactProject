@@ -1,13 +1,16 @@
 import {
-	NumberInput,
-	SearchSelect,
-	SearchSelectItem,
-	TextInput,
-} from "@tremor/react";
-import { TYPE } from "../const";
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	InputAdornment,
+	TextField,
+	Typography,
+} from "@mui/material";
+import { TypeSelect } from "./TypeSelect";
+
 interface Props {
 	handleChangeType: (type: string) => void;
-	hangleChangeName: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	hangleChangeName: (name: string) => void;
 	handleChangeId: (id: number) => void;
 	handleChangeHeight: (height: number) => void;
 	handleChangeWeight: (weight: number) => void;
@@ -15,77 +18,96 @@ interface Props {
 
 export function Filters({
 	handleChangeType,
-	hangleChangeName,
 	handleChangeId,
+	hangleChangeName,
 	handleChangeHeight,
 	handleChangeWeight,
 }: Props) {
-	const typesPokemon = Object.values(TYPE);
+	const changeId = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		const valueNumber = Number(event.target.value);
+
+		if (valueNumber >= 0) {
+			handleChangeId(valueNumber);
+		}
+	};
+
+	const changeName = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		hangleChangeName(event.target.value);
+	};
+
+	const changeWeight = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		const weight = Number(event.target.value);
+		if (weight >= 0) {
+			handleChangeWeight(weight);
+		}
+	};
+
+	const changeHeight = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		const height = Number(event.target.value);
+		if (height >= 0) {
+			handleChangeHeight(height);
+		}
+	};
 
 	return (
-		<div className="mx-auto max-w-2xl flex flex-row justify-between px-5">
-			<div className="flex flex-col">
-				<div className="mb-2 text-center font-mono text-sm text-slate-500">
-					Tipos
-				</div>
-				<SearchSelect
-					className="mb-5"
-					onValueChange={(value) => handleChangeType(value)}
-				>
-					{typesPokemon.map((type) => (
-						<SearchSelectItem
-							style={{ background: "white" }}
-							key={type}
-							value={type}
-						>
-							{type}
-						</SearchSelectItem>
-					))}
-				</SearchSelect>
-
-				<div className="mb-2 text-center font-mono text-sm text-slate-500">
-					Nombre
-				</div>
-				<TextInput
-					onChange={(event) => hangleChangeName(event)}
-					placeholder="bulbasaur, charmander, ..."
-				/>
+		<>
+			<div style={{ marginBottom: 51, maxWidth: "400px" }}>
+				<Accordion>
+					<AccordionSummary aria-controls="panel1-content" id="panel1-header">
+						<Typography>Filtros</Typography>
+					</AccordionSummary>
+					<AccordionDetails
+						style={{ display: "flex", flexDirection: "column", gap: 10 }}
+					>
+						<TypeSelect handleChangeType={handleChangeType} />
+						<TextField
+							label="nombre"
+							variant="outlined"
+							onChange={(event) => changeName(event)}
+						/>
+						<div style={{ display: "flex", gap: 5 }}>
+							<TextField
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position="start">ID</InputAdornment>
+									),
+								}}
+								label="id pokemon"
+								variant="outlined"
+								onChange={(event) => changeId(event)}
+							/>
+							<TextField
+								label="altura"
+								variant="outlined"
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position="start">M</InputAdornment>
+									),
+								}}
+								onChange={(event) => changeHeight(event)}
+							/>
+							<TextField
+								label="peso"
+								variant="outlined"
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position="start">KG</InputAdornment>
+									),
+								}}
+								onChange={(event) => changeWeight(event)}
+							/>
+						</div>
+					</AccordionDetails>
+				</Accordion>
 			</div>
-			<div>
-				<div className="mb-2 text-center font-mono text-sm text-slate-500">
-					id
-				</div>
-				<NumberInput
-					min={0}
-					onValueChange={(id) => {
-						handleChangeId(id);
-					}}
-					placeholder="1"
-					className="mb-5 mx-auto max-w-sm"
-				/>
-				<div className="mb-2 text-center font-mono text-sm text-slate-500">
-					altura
-				</div>
-				<NumberInput
-					min={0}
-					onValueChange={(height) => {
-						handleChangeHeight(height);
-					}}
-					placeholder="0.7"
-					className="mb-5 mx-auto max-w-sm"
-				/>
-				<div className="mb-4 text-center font-mono text-sm text-slate-500">
-					peso
-				</div>
-				<NumberInput
-					min={0}
-					onValueChange={(weight) => {
-						handleChangeWeight(weight);
-					}}
-					placeholder="6.9"
-					className="mb-5 mx-auto max-w-sm"
-				/>
-			</div>
-		</div>
+		</>
 	);
 }

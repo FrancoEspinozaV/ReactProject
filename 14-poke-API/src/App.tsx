@@ -1,10 +1,9 @@
-import { Button } from "@tremor/react";
+import { Button } from "@mui/material";
 import "./App.css";
 import { Filters } from "./components/Filters";
 import { TablePoke } from "./components/TablePoke";
 import { useFilters } from "./hooks/useFilters";
 import { usePokemon } from "./hooks/usePokemon";
-
 function App() {
 	const { fetchNextPage, isLoading } = usePokemon();
 	const {
@@ -33,7 +32,7 @@ function App() {
 			)}
 			{!isLoading && <TablePoke pokes={selectedType} />}
 			{!isLoading && (
-				<Button className="mt-4" onClick={() => fetchNextPage()}>
+				<Button variant="outlined" onClick={() => fetchNextPage()}>
 					cargar mas pokemons
 				</Button>
 			)}

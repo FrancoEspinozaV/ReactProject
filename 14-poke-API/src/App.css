@@ -4,3 +4,269 @@
   padding: 2rem;
   text-align: center;
 }
+
+.wrapper{
+  border-radius: 20px;
+  max-width: 210px;
+  overflow: hidden;
+}
+.img-pokemon{
+  min-height: 130px;
+  max-height: 210px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons-img{
+  display: flex;
+  gap:10px;
+  border-radius: 10px;
+  background-color: white;
+  transform: translateY(54px);
+  position: absolute;
+  padding: 5px 15px 5px 15px;
+}
+
+.id-poke{
+  padding-top: 13px;
+  font-size:xx-small;
+  opacity: 0.75;
+}
+.right-icon{
+  transform: translate(42px,54px);
+  position: absolute;
+  width: 20px;
+  height: 23px;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  background-color: white;
+}
+
+.left-icon{
+  transform: translate(-42px,54px);
+  position: absolute;
+  width: 20px;
+  height: 23px;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  background-color: white;
+}
+
+.info-poke{
+  min-height: 100px;
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  padding-left: 15px;
+}
+
+.name-poke{
+  font-size:large;
+  font-weight:500;
+}
+
+.type{
+  display: flex;
+  font-size: x-small;
+  padding: 1px 8px;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.wrapper-type{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.cards-poke{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
+  gap: 2px;
+  margin-bottom: 15px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.container-stats{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.stats{
+  padding: 2px,
+}
+
+/*-----*/
+.hada{
+  background-color: pink;
+}
+.normal{
+  background-color: gray;
+  color: white;
+}
+
+.fire {
+	background-color: #f08030;
+  color: white;
+}
+
+.water {
+	background-color: #6890F0;
+  color: white;
+}
+
+.electric {
+	background-color: #F8D030;
+}
+
+.grass {
+	background-color: #78C850;
+  color: white;
+}
+
+.ice {
+	background-color: #98D8D8;
+}
+
+.fighting {
+	background-color: #C03028;
+  color: white;
+}
+
+.poison {
+	background-color: #A040A0;
+  color: white;
+}
+
+.ground {
+	background-color: #E0C068;
+}
+
+.flying {
+	background-color: #A890F0;
+  color: white;
+}
+
+.psychic {
+	background-color: #F85888;
+  color: white;
+}
+
+.bug {
+	background-color: #A8B820;
+  color: white;
+}
+
+.rock {
+	background-color: #B8A038;
+  color:white;
+}
+
+.ghost {
+	background-color: #705898;
+  color:white;
+}
+
+.dragon {
+	background-color: #7038F8;
+  color: white;
+}
+
+.dark {
+	background-color: #705848;
+  color: white;
+}
+
+.steel {
+	background-color: #B8B8D0;
+}
+
+.fairy {
+	background-color: #EE99AC;
+}
+
+/*-------*/
+
+.hada-opacity{
+  background-color: rgba(255, 192, 203, 0.15);
+}
+.normal-opacity{
+  background-color: rgba(128, 128, 128, 0.15);
+}
+
+.fire-opacity {
+	background-color: rgba(240, 128, 48, 0.15);
+}
+
+.water-opacity {
+	background-color: rgba(104, 145, 240, 0.15);
+}
+
+.electric-opacity {
+	background-color: rgba(248, 208, 48, 0.15);
+}
+
+.grass-opacity {
+	background-color: rgba(120, 200, 80, 0.15);
+}
+
+.ice-opacity {
+	background-color: rgba(152, 216, 216, 0.15);
+}
+
+.fighting-opacity {
+	background-color: rgba(192, 48, 40, 0.15);
+}
+
+.poison-opacity {
+	background-color: rgba(160, 64, 160, 0.15);
+}
+
+.ground-opacity {
+	background-color: rgba(224, 192, 104, 0.15);
+}
+
+.flying-opacity {
+	background-color: rgba(168, 144, 240, 0.15);
+}
+
+.psychic-opacity {
+	background-color: rgba(248, 88, 136, 0.15);
+}
+
+.bug-opacity {
+	background-color: rgba(169, 184, 32, 0.15);
+}
+
+.rock-opacity {
+	background-color: rgba(184, 161, 56, 0.15);
+}
+
+.ghost-opacity {
+	background-color: rgba(113, 88, 152, 0.15);
+}
+
+.dragon-opacity {
+	background-color: rgba(114, 56, 248, 0.15);
+}
+
+.dark-opacity {
+	background-color: rgba(112, 88, 72, 0.15);
+}
+
+.steel-opacity {
+	background-color: rgba(184, 184, 208, 0.15);
+}
+
+.fairy-opacity {
+	background-color: rgba(238, 153, 171, 0.15);
+}

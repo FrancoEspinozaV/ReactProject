@@ -1,4 +1,4 @@
-import { Pokemon } from "../types";
+import { Pokemon, StatElement } from "../types";
 
 export async function getPokes({ pageParam }: { pageParam: number | unknown }) {
 	const limit = 20;
@@ -15,7 +15,16 @@ export async function getPokes({ pageParam }: { pageParam: number | unknown }) {
 			const infoPokemon = await dataPokemon({
 				url: data.url,
 			});
-			const { id, name, spriteUrl, weight, height, types } = infoPokemon;
+			const {
+				id,
+				name,
+				spriteUrl,
+				weight,
+				height,
+				types,
+				stats,
+				spriteUrlShiny,
+			} = infoPokemon;
 			return {
 				id,
 				name,
@@ -23,6 +32,8 @@ export async function getPokes({ pageParam }: { pageParam: number | unknown }) {
 				weight,
 				height,
 				types,
+				stats,
+				spriteUrlShiny,
 			};
 		}),
 	);
@@ -49,8 +60,17 @@ export async function dataPokemon({ url }: { url: string }) {
 	if (!data.ok) throw new Error("error when get info pokemon");
 
 	const pokemonJson = await data.json();
-	const { id, name, sprites, weight, height, types } = pokemonJson;
-	const { front_default: spriteUrl } = sprites;
+	const { id, name, sprites, weight, height, types, stats } = pokemonJson;
+	const { front_default: spriteUrl, front_shiny: spriteUrlShiny } = sprites;
+	const newFormatStats = stats.map((pokeStat: StatElement) => {
+		const { base_stat, stat } = pokeStat;
+		const { name } = stat;
+		const newStat = {
+			base_stat,
+			name,
+		};
+		return newStat;
+	});
 	const newTypes = types.map((type: PokemonType) => type.type.name);
 	return {
 		id,
@@ -59,5 +79,7 @@ export async function dataPokemon({ url }: { url: string }) {
 		weight,
 		height,
 		types: newTypes,
+		stats: newFormatStats,
+		spriteUrlShiny,
 	};
 }

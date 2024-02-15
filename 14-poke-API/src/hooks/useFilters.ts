@@ -24,7 +24,7 @@ export function useFilters() {
 	const filterByName = (name: string) => (poke: InfoPokemon) =>
 		!name || poke.name.toLowerCase().includes(name.toLowerCase());
 	const filterByType = (type: string) => (poke: InfoPokemon) =>
-		!type || poke.types.includes(type);
+		!type || type === "all" || poke.types.includes(type);
 	const filterByHeight = (height: number) => (poke: InfoPokemon) =>
 		!height || poke.height.toString().startsWith(height.toString());
 	const filterByWeight = (weight: number) => (poke: InfoPokemon) =>
@@ -81,8 +81,7 @@ export function useFilters() {
 		});
 	};
 
-	const hangleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const name = event.target.value;
+	const hangleChangeName = (name: string) => {
 		setFilter((prev) => {
 			return {
 				...prev,
