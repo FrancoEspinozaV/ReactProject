@@ -17,8 +17,8 @@ export const numerosSquare = [
     background: 'white',
     userData: {
       phone: '+56 9 9431 0549',
-      name: 'Ana López',
-      email: 'ana.lópez@gmail.com',
+      name: 'Andres Perez',
+      email: 'andres.perez@gmail.com',
     },
   },
   {
@@ -327,6 +327,83 @@ export const numerosSquare = [
       phone: '+56 9 6436 6158',
       name: 'María Romero',
       email: 'maría.romero@gmail.com',
+    },
+  },
+]
+
+export const awards = [
+  {
+    nameAwards: 'Play 4',
+    urlImg:
+      'https://http2.mlstatic.com/D_NQ_NP_798586-MLA40076060236_122019-O.webp',
+    urlInfoAwards:
+      'https://www.mercadolibre.cl/sony-playstation-4-slim-cuh-20-500gb-standard-color-negro-azabache/p/MLC6252346',
+    description: '',
+    winner: {
+      id: '',
+      name: 'Andrecito Perez',
+      winningNumber: 0,
+      phone: '',
+      email: '',
+    },
+  },
+  {
+    nameAwards: 'Set de vasos',
+    urlImg:
+      'https://eurohome.cl/cdn/shop/products/VasosLdrinkPro-3_1800x.jpg?v=1657752163',
+    urlInfoAwards: 'https://eurohome.cl/products/set-4-vasos-gin-longdrink-pro',
+    description: '',
+    winner: {
+      id: '',
+      name: '',
+      winningNumber: 0,
+      phone: '',
+      email: '',
+    },
+  },
+  {
+    nameAwards: 'Licuadroa',
+    urlImg:
+      'https://www.kitchencenter.cl/cdn/shop/files/Licuadora-Reversible-Vaso-BlendNgo-Oster.jpg?v=1703697387',
+    urlInfoAwards:
+      'https://www.kitchencenter.cl/products/licuadora-reversible-vaso-blendngo-blstpyg1310rbg?variant=40235662344247',
+    description: '',
+    winner: {
+      id: '',
+      name: '',
+      winningNumber: 0,
+      phone: '',
+      email: '',
+    },
+  },
+  {
+    nameAwards: 'Cama',
+    urlImg:
+      'https://www.ikea.com/cl/es/images/products/malm-cama-baul-blanco__1154392_pe886041_s5.jpg',
+    urlInfoAwards:
+      'https://www.ikea.com/cl/es/p/malm-cama-baul-blanco-90404799/',
+    description: '',
+    winner: {
+      id: '',
+      name: '',
+      winningNumber: 0,
+      phone: '',
+      email: '',
+    },
+  },
+  {
+    nameAwards: 'Parlante JBL',
+    urlImg:
+      'https://www.estilomovil.cl/wp-content/uploads/2022/03/Parlante-Bluetooth-JBL-Flip-5-Negro-min.jpg',
+    urlInfoAwards:
+      'https://www.estilomovil.cl/producto/parlante-bluetooth-jbl-flip-5-negro/',
+    description: '',
+    winner: {
+      id: '',
+      name: '',
+      winningNumber: 0,
+      phone: '',
+      email: '',
     },
   },
 ]

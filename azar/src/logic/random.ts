@@ -1,9 +1,14 @@
 import { SquareType } from '../types'
 
+interface PropsWithWeights {
+  // dividir propsWithWeights
+  elementos: SquareType[]
+}
+
 interface Props {
   elementos: SquareType[]
 }
-export function generarDatosAlAzarConPesos({ elementos }: Props) {
+export function generarDatosAlAzarConPesos({ elementos }: PropsWithWeights) {
   const pesos = elementos.map((element) => element.weights)
   if (elementos.length !== pesos.length) {
     throw new Error('La longitud de elementos y pesos debe ser la misma')
